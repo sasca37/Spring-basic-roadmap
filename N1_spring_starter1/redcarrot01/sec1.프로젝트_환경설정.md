@@ -1,4 +1,4 @@
-# 1.1 프로젝트 
+# 1. 프로젝트 
 
 ### 1) 프로젝트 생성
 
@@ -38,7 +38,7 @@ src 아래에 main과 test가 있다.  main 아래에 java, resource는 실제 �
 
 build.gradle은 mavenCentral() 을 통해 dependencies를 받아오고 빌드하기 쉽게 설정해준다.
 
-![image-20210719144744493](C:\Users\yujin\AppData\Roaming\Typora\typora-user-images\image-20210719144744493.png)
+![image](https://user-images.githubusercontent.com/38436013/126335285-d5ac7dd9-ea12-4a71-9685-cce40bd0d83c.png)
 
 ### 3) 프로젝트 실행
 
@@ -46,12 +46,12 @@ build.gradle은 mavenCentral() 을 통해 dependencies를 받아오고 빌드하
 
 스프링부트 소스 라이브러리가 톰캣서버를 내장하고 있다.
 
-<img src="C:\Users\yujin\AppData\Roaming\Typora\typora-user-images\image-20210719144710342.png" alt="image-20210719144710342" style="zoom: 67%;" />
+![image](https://user-images.githubusercontent.com/38436013/126335308-a4570bbf-dc6b-4775-ae21-55eec11d684b.png)
 
 - preference 단축키 : ctrl + alt+s
 - gradle 거치지 않고 인텔리제이 실행 : preference -> gradle -> intelliJ 로 바꾸기
 
-# 1.2 라이브러리 
+# 2. 라이브러리 
 
 >  Gradle은 의존 관계가 있는 라이브러리를 함께 다운로드 한다.
 
@@ -75,7 +75,7 @@ build.gradle은 mavenCentral() 을 통해 dependencies를 받아오고 빌드하
   - assertj : 테스트 코드를 좀 더 편하게 작성하게 도와주는 라이브러리
   - spring-test : 스프링 통합 테스트 지원 (junit 을 스프링과 통합하여 테스트를 도와줌)
 
-# 1.3 View 환경 설정
+# 3. View 환경 설정
 
 ### 1) 정적 페이지 동작
 
@@ -143,13 +143,13 @@ build.gradle은 mavenCentral() 을 통해 dependencies를 받아오고 빌드하
 
 #### 동작 환경
 
-![image-20210719171832558](C:\Users\yujin\AppData\Roaming\Typora\typora-user-images\image-20210719171832558.png)
+![image](https://user-images.githubusercontent.com/38436013/126335373-015dbdeb-f333-4ace-ba9c-d9e752b993a3.png)
 
 > 웹에 url을 검색 ->  톰캣이 먼저 받고->  /hello과 매핑된 컨트롤러에 전달 -> 컨트롤러는 model의 data 키 값을 html에 리턴 ->  html에서 화면 처리한다.
 
 
 
-# 1.4 빌드와 실행하기
+# 4. 빌드와 실행하기
 
 [윈도우 버전]
 
