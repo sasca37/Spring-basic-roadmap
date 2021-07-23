@@ -24,6 +24,7 @@ JAVA 11, IntelliJ, Gradle, Spring Boot 2.5.2
 Gradle 통해 실행하는 것 보다 자바로 실행하는 것이 속도가 빠르다. 
 File -> Setting
 Build, Execution, Deployment -> Build Tools -> Gradle 
+<img src="https://user-images.githubusercontent.com/81945553/126821863-d68d984a-6df0-46dd-9a56-09eca3527cb3.png"  width="700" height="400">
 
 
 ## 라이브러리 
@@ -46,11 +47,31 @@ Build, Execution, Deployment -> Build Tools -> Gradle
 ## VIEW 
 static/index.html을 올려두면 Welcome page 기능을 제공한다. 
 
+## 동작 과정 
 
 ```java
-public class BootSpringBootApplication {
-  public static void main(String[] args) {
-    System.out.println("Hello, ㅁㄴㅇ");
-  }
+@Controller
+public class HelloController {
+ @GetMapping("hello")
+ public String hello(Model model) {
+ model.addAttribute("data", "hello!!");
+ return "hello";
+ }
 }
 ```
+
+```html
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+ <title>Hello</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p th:text="'안녕하세요. ' + ${data}" >안녕하세요. 손님</p>
+</body>
+</html>
+```
+
+![캡쳐1](https://user-images.githubusercontent.com/81945553/126821474-4e440e40-a628-4469-b044-41f79a614fd2.png)
+
