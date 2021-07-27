@@ -8,7 +8,13 @@
 ## AOP 기능
 - @Aspect : 흩어진 관심사를 모듈화, Aspect 클래스임을 정의
 - Target : Aspect를 적용하는 곳 (클래스, 메서드 등 )
-- Advice : 실질적으로 어떤 일을 해야할 지에 대한 것, 실질적인 부가기능을 담은 구현체
+- Advice : 실질적으로 어떤 일을 해야할 지에 대한 것, 실질적인 부가기능을 담은 구현체  
+    - Advice 동작시점 
+    - @Before : 메서드 실행 전에 동작
+    - @After : 메서드 실행 후에 동작
+    - @After-returning : 메서드 정상 실행 후에 동작
+    - @After-throwing : 예외가 발생한 후에 동작 
+    - @Around : 메서드 호출 이전, 이후, 예외 발생 등 모든 시점에 동작 
 - JointPoint : Advice가 적용될 위치, 끼어들 수 있는 지점. 메서드 진입 지점, 생성자 호출 시점, 필드에서 값을 꺼내올 때 등 다양한 시점에 적용가능
 - PointCut : JointPoint의 상세한 스펙을 정의한 것. 'A란 메서드의 진입 시점에 호출할 것'과 같이 더욱 구체적으로 Advice가 실행될 지점을 정할 수 있음
 
@@ -81,7 +87,7 @@ public class TimeTraceAop {
     // 가짜 Bean 통해 프록시를 생성 후 JoinPoint로 진짜 Bean으로 연결
     public Object execute(ProceedingJoinPoint joinPoint) throws Throwable {
         long start = System.currentTimeMillis();
-        System.out.println("START: " + joinPoint.toString());
+        System.out.println("START: " + joinPoint.toString()); //joinPoint.toString(): 실행위치 
         try {
             return joinPoint.proceed(); //인라인으로 합침 (Object result = joinPoint.proceed(); + return result;)
         } finally {
