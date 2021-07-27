@@ -1,16 +1,46 @@
 ## AOP란? 
 - Spring은 Spring Triangle이라고 부르는 세 가지 개념을 제공해준다. 각각 IoC, AOP, PSA를 일컫는다.
-- AOP는 Aspect Oriented Programming의 약자로 '측면/양상 지향적인 프로그래밍'이라는 의미이다.
+- AOP는 Aspect Oriented Programming의 약자로 '관점 지향적인 프로그래밍'이라는 의미이다.
+- AOP의 핵심 개념은 관심사의 분리이다. (Tracing, Exception, Transction 등)
+- AOP 사용 시 코드 분산, 코드 꼬임 등을 처리하여 간결한 구조를 만들 수 있다.
 - ※ PSA (Portable Service Abstraction) : 추상화 계층을 사용하여 어떤 기술을 내부에 숨기고 개발자에게 편의성을 제공해주는 것
 
-## AOP 개념 
-- Aspect : 흩어진 관심사를 모듈화
+## AOP 기능
+- @Aspect : 흩어진 관심사를 모듈화, Aspect 클래스임을 정의
 - Target : Aspect를 적용하는 곳 (클래스, 메서드 등 )
 - Advice : 실질적으로 어떤 일을 해야할 지에 대한 것, 실질적인 부가기능을 담은 구현체
 - JointPoint : Advice가 적용될 위치, 끼어들 수 있는 지점. 메서드 진입 지점, 생성자 호출 시점, 필드에서 값을 꺼내올 때 등 다양한 시점에 적용가능
 - PointCut : JointPoint의 상세한 스펙을 정의한 것. 'A란 메서드의 진입 시점에 호출할 것'과 같이 더욱 구체적으로 Advice가 실행될 지점을 정할 수 있음
 
-### AOP가 필요한 예시 상황 (시간 측정 기능)
+### AOP 예시1
+```Java
+Connection connection = dataSource.getConnection(); 
+
+try (connection) {
+    connection.setAutoCommit(false);   
+    m.select();
+    m.update()
+    m.insert();
+    m.delete();
+    connection.commit(); 
+} catch (SQLException e) {
+    connection.rollback();
+}
+```
+- CRUD 처리할 때마다 예외처리 및 중복 코드 발생 
+```Java 
+@Transactional
+public String sql() {
+    m.select();
+    m.update();
+    m.insert();
+    m.delete();
+}
+```
+- @Transactinal : db connect를 통해 로직들을 하나의 트랜잭션으로 관리 (모든 로직이 정상적으로 끝나야 commit)
+
+
+### AOP 예시2 (시간 측정 기능)
 ```Java
 public List<Member> findMember() {
         long start = System.currentTimeMillis(); // 시간측정 로직
